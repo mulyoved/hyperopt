@@ -248,6 +248,7 @@ def connection_with_tunnel(host='localhost',
             connection = pymongo.MongoClient('127.0.0.1', local_port,
                                              document_class=SON, w=1, j=True)
         else:
+            
             connection = pymongo.MongoClient(host, port, document_class=SON, w=1, j=True)
             if user:
                 if user == 'hyperopt':
@@ -267,17 +268,25 @@ def connection_from_string(s):
     protocol, user, pw, host, port, db, collection = parse_url(s)
     if protocol == 'mongo':
         ssh=False
+    elif protocol == 'mongodb':
+        pass
     elif protocol in ('mongo+ssh', 'ssh+mongo'):
         ssh=True
     else:
         raise ValueError('unrecognized protocol for MongoJobs', protocol)
-    connection, tunnel = connection_with_tunnel(
+
+    if protocol == 'mongodb':
+        connection = pymongo.MongoClient(s, document_class=SON, w=1, j=True)
+        tunnel = None        
+    else:
+	    connection, tunnel = connection_with_tunnel(
             ssh=ssh,
             user=user,
             pw=pw,
             host=host,
             port=port,
             )
+            
     return connection, tunnel, connection[db], connection[db][collection]
 
 
