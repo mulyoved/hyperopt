@@ -212,7 +212,7 @@ def parse_url(url, pwfile=None):
         _, dbname, collection = tmp.path.split('/')
     except:
         collection = "jobs"
-        dbname = tmp.path
+        dbname = tmp.path.replace('/','')
 
     logger.info( 'DB %s'% dbname)
     logger.info( 'COLLECTION %s'% collection)
