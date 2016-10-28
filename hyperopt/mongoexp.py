@@ -1165,10 +1165,10 @@ def exec_import(cmd_module, cmd):
 
 
 def as_mongo_str(s):
-    if s.startswith('mongo://'):
+    if s.startswith('mongodb://'):
         return s
     else:
-        return 'mongo://%s' % s
+        return 'mongodb://%s' % s
 
 
 def main_worker_helper(options, args):
@@ -1248,7 +1248,7 @@ def main_worker_helper(options, args):
         # XXX: the name of the jobs collection is a parameter elsewhere,
         #      so '/jobs' should not be hard-coded here
         mj = MongoJobs.new_from_connection_str(
-                as_mongo_str(options.mongo) + '/jobs')
+                as_mongo_str(options.mongo))
 
         mworker = MongoWorker(mj,
                 float(options.poll_interval),
