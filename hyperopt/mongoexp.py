@@ -211,8 +211,9 @@ def parse_url(url, pwfile=None):
     try:
         _, dbname, collection = tmp.path.split('/')
     except:
-        print >> sys.stderr, "Failed to parse '%s'"%(str(tmp.path))
-        raise
+        collection = "jobs"
+        dbname = tmp.path
+
     logger.info( 'DB %s'% dbname)
     logger.info( 'COLLECTION %s'% collection)
 
