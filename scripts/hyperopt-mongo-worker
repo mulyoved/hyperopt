@@ -4,9 +4,9 @@ import os
 import hyperopt.mongoexp
 import logging
 
-workdir = '/opt/notebooks/assignment2/' 
+workdir = '/opt/notebooks/assignment2/'
+cwd = os.getcwd() 
 sys.path.append(workdir)
-os.chdir(workdir)
 
 from hyperopt import fmin, tpe, hp, STATUS_OK, STATUS_FAIL, Trials
 import hyperopt.pyll.stochastic
@@ -23,9 +23,11 @@ logging.basicConfig(
         level=logging.INFO)
 
 
+os.chdir(workdir)
 data = get_CIFAR10_data()
 for k, v in data.iteritems():
   print '%s: ' % k, v.shape
+os.chdir(cwd)
 
 
 num_train = 50
