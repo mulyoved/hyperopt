@@ -19,4 +19,19 @@ from cs231n.solver import Solver
 logging.basicConfig(
         stream=sys.stderr,
         level=logging.INFO)
+
+
+data = get_CIFAR10_data()
+for k, v in data.iteritems():
+  print '%s: ' % k, v.shape
+
+
+num_train = 50
+small_data = {
+  'X_train': data['X_train'][:num_train],
+  'y_train': data['y_train'][:num_train],
+  'X_val': data['X_val'],
+  'y_val': data['y_val'],
+}  
+
 sys.exit(hyperopt.mongoexp.main_worker())
