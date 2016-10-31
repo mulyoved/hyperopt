@@ -38,4 +38,5 @@ small_data = {
   'y_val': data['y_val'],
 }  
 
-sys.exit(hyperopt.mongoexp.main_worker())
+while True:
+        hyperopt.mongoexp.main_worker()
