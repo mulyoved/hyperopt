@@ -4,7 +4,7 @@ import hyperopt.mongoexp
 import logging
 
 
-sys.path.append(os.path.expanduser('/opt/notebooks/assignment2/'))
+sys.path.append('/opt/notebooks/assignment2/')
 
 from hyperopt import fmin, tpe, hp, STATUS_OK, STATUS_FAIL, Trials
 import hyperopt.pyll.stochastic
