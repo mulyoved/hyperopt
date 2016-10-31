@@ -3,6 +3,9 @@ import sys
 import hyperopt.mongoexp
 import logging
 
+
+sys.path.append(os.path.expanduser('/opt/notebooks/assignment2/'))
+
 from hyperopt import fmin, tpe, hp, STATUS_OK, STATUS_FAIL, Trials
 import hyperopt.pyll.stochastic
 from hyperopt.mongoexp import MongoTrials
@@ -12,8 +15,6 @@ from cs231n.classifiers.fc_net import *
 from cs231n.data_utils import get_CIFAR10_data
 from cs231n.gradient_check import eval_numerical_gradient, eval_numerical_gradient_array
 from cs231n.solver import Solver
-
-
 
 logging.basicConfig(
         stream=sys.stderr,
