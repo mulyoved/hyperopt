@@ -843,6 +843,7 @@ class Domain(object):
             dict_rval = dict(rval)
             status = dict_rval['status']
             if status not in STATUS_STRINGS:
+                print 'status', status
                 raise InvalidResultStatus(dict_rval)
 
             if status == STATUS_OK:
@@ -893,6 +894,7 @@ class Domain(object):
             dict_rval = dict(rval)
             status = dict_rval['status']
             if status not in STATUS_STRINGS:
+                print 'status', status
                 raise InvalidResultStatus(dict_rval)
 
             if status == STATUS_OK:
